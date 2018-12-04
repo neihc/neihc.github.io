@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bảng dữ liệu on 30 Days Python &amp; Flask</title>
+    <link>/chapters/03-bang-du-lieu/</link>
+    <description>Recent content in Bảng dữ liệu on 30 Days Python &amp; Flask</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 04 Dec 2018 23:17:02 +0700</lastBuildDate>
+    
+	<atom:link href="/chapters/03-bang-du-lieu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Giới thiệu bảng dữ liệu</title>
+      <link>/chapters/03-bang-du-lieu/gioi-thieu-bang-du-lieu/</link>
+      <pubDate>Tue, 04 Dec 2018 23:45:06 +0700</pubDate>
+      
+      <guid>/chapters/03-bang-du-lieu/gioi-thieu-bang-du-lieu/</guid>
+      <description>Mọi thứ là dữ liệu Cho ai còn chưa hiểu dữ liệu là gì. Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,.. Tóm lại, mọi thứ mang thông tin đều có dữ liệu.
+Vậy cơ sở dữ liệu là gì? Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó.</description>
+    </item>
+    
+  </channel>
+</rss>
