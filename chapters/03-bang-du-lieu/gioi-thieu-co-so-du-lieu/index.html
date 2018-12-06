@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Categories :: 30 Days Python &amp; Flask</title>
+    <title>Làm quen với cơ sở dữ liệu :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544122627" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -113,8 +113,8 @@
   
     
     <li data-nav-id="/chapters/" title="Chapters" class="dd-item 
+        parent
         
-        active
         
         ">
       <a href="/chapters/">
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/03-bang-du-lieu/" title="Bảng dữ liệu" class="dd-item 
-        
+        parent
         
         
         ">
@@ -168,7 +168,7 @@
  
   
     
-      <li data-nav-id="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" class="dd-item ">
+      <li data-nav-id="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" class="dd-item active">
         <a href="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/">
         Làm quen với cơ sở dữ liệu
         <i class="fas fa-check read-icon"></i>
@@ -265,6 +265,17 @@
               <div>
                 <div id="top-bar">
                 
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
                 
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
@@ -281,7 +292,25 @@
                     
           
           
-            Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Test hugo index</a> > <a href='/chapters/'>Chapters</a> > <a href='/chapters/03-bang-du-lieu/'>Bảng dữ liệu</a> > Làm quen với cơ sở dữ liệu
+          
+         
+          
+         
+          
+         
           
         
                  
@@ -290,7 +319,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#mọi-thứ-là-dữ-liệu">Mọi thứ là dữ liệu</a></li>
+<li><a href="#vậy-cơ-sở-dữ-liệu-là-gì">Vậy cơ sở dữ liệu là gì?</a></li>
+<li><a href="#có-ví-dụ-nào-dễ-hiểu-hơn-không">Có ví dụ nào dễ hiểu hơn không?</a></li>
+<li><a href="#cơ-sở-dữ-liệu-dạng-bảng">Cơ sở dữ liệu dạng bảng</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -302,7 +341,7 @@
         
         <div id="body-inner">
           
-            <h1>Categories</h1>
+            <h1>Làm quen với cơ sở dữ liệu</h1>
           
 
         
@@ -310,9 +349,85 @@
 
 
 
+<h2 id="mọi-thứ-là-dữ-liệu">Mọi thứ là dữ liệu</h2>
+
+<p>Cho ai còn chưa hiểu dữ liệu là gì.
+Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,..
+Tóm lại, mọi thứ mang thông tin đều có dữ liệu.</p>
+
+<h2 id="vậy-cơ-sở-dữ-liệu-là-gì">Vậy cơ sở dữ liệu là gì?</h2>
+
+<p><em>Tiếng anh: Database</em>
+Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó. Người dùng có thể đọc, chỉnh sửa, xóa dữ liệu trên
+đó qua một công cụ quản lý.</p>
+
+<h2 id="có-ví-dụ-nào-dễ-hiểu-hơn-không">Có ví dụ nào dễ hiểu hơn không?</h2>
+
+<p>Bạn có 1 cuốn sổ ghi lại những gì cần làm (To do List)
+Với cuổn sổ đó bạn có thể xem, sửa, xóa các việc trong danh sách đó.</p>
+
+<p>Vậy:</p>
+
+<ol>
+<li><strong>Việc cần làm</strong> là dữ liệu</li>
+<li>Các việc cần làm được <strong>tổ chức dưới dạng danh sách</strong> theo ngày là cơ dở dữ liệu.</li>
+<li><strong>Cuốn sổ và cây bút</strong> là nơi lưu trữ và quản lý dữ liệu</li>
+</ol>
+
+<h2 id="cơ-sở-dữ-liệu-dạng-bảng">Cơ sở dữ liệu dạng bảng</h2>
+
+<p><img src="../relational-database-example.png?height=200px" alt="database table" /></p>
+
+<p>Có một cách biểu diễn dữ liệu rất phổ biến và trực quan đó là biểu diễn theo dạng bảng.
+Ví dụ ta có 1 bảng biểu diễn danh sách một lớp học như sau:</p>
+
+<table>
+<thead>
+<tr>
+<th>Mã SV</th>
+<th>Họ Tên</th>
+<th>Ngày sinh</th>
+<th>SĐT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>20150311</td>
+<td>Nguyễn Văn An</td>
+<td>01/01/1997</td>
+<td>0123456789</td>
+</tr>
+
+<tr>
+<td>20136312</td>
+<td>Trần Bảo Bình</td>
+<td>02/03/1997</td>
+<td>0131341414</td>
+</tr>
+
+<tr>
+<td>20150362</td>
+<td>Nguyễn Văn Chiến</td>
+<td>06/03/1992</td>
+<td>0466778899</td>
+</tr>
+</tbody>
+</table>
+
+<p>Đây là một bảng dữ liệu với các cột (column) đại diện cho <strong>đặc điểm của đối tượng</strong> học sinh (Field, Attribute).
+Thông tin của một học sinh sẽ nằm trên cùng một hàng (row)</p>
+
+<p>Tập hợp các bảng liên quan lại với nhau ta có được một <strong>Cơ sở dữ liệu</strong></p>
+
+<p>Tới đây ta có thể hình dung được 1 file excel cũng là một cơ sở dữ liệu.
+So easy, right?</p>
+
+
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -345,8 +460,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -363,6 +476,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -375,6 +489,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -391,6 +506,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -418,8 +536,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/chapters/03-bang-du-lieu/" title="Bảng dữ liệu"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/chapters/" title="Chapters" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/chapters/03-bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -458,3 +578,4 @@
 </script>
   </body>
 </html>
+

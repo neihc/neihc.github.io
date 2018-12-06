@@ -12,13 +12,24 @@
     
     
     <item>
-      <title>Giới thiệu bảng dữ liệu</title>
-      <link>/chapters/03-bang-du-lieu/gioi-thieu-bang-du-lieu/</link>
+      <title>Làm quen với cơ sở dữ liệu</title>
+      <link>/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/</link>
       <pubDate>Tue, 04 Dec 2018 23:45:06 +0700</pubDate>
       
-      <guid>/chapters/03-bang-du-lieu/gioi-thieu-bang-du-lieu/</guid>
+      <guid>/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/</guid>
       <description>Mọi thứ là dữ liệu Cho ai còn chưa hiểu dữ liệu là gì. Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,.. Tóm lại, mọi thứ mang thông tin đều có dữ liệu.
-Vậy cơ sở dữ liệu là gì? Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó.</description>
+Vậy cơ sở dữ liệu là gì? Tiếng anh: Database Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó.</description>
+    </item>
+    
+    <item>
+      <title>Giới thiệu SQL</title>
+      <link>/chapters/03-bang-du-lieu/gioi-thieu-sql/</link>
+      <pubDate>Wed, 05 Dec 2018 23:26:59 +0700</pubDate>
+      
+      <guid>/chapters/03-bang-du-lieu/gioi-thieu-sql/</guid>
+      <description>SQL là gì? SQL = Structured Query Language
+SQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu. Hệ quản trị CSDL Tiếng anh: Database Management System - DBMS
+Là các chương trình/hệ thống được thiết kế để quản lý CSDL. Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.</description>
     </item>
     
   </channel>

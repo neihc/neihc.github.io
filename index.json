@@ -7,11 +7,18 @@
 	"content": " Ngày 03 Bảng dữ liệu Học cách tạo bảng với SQL và sử dụng SQL trong Python\n"
 },
 {
-	"uri": "/chapters/03-bang-du-lieu/gioi-thieu-bang-du-lieu/",
-	"title": "Giới thiệu bảng dữ liệu",
+	"uri": "/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/",
+	"title": "Làm quen với cơ sở dữ liệu",
 	"tags": [],
 	"description": "",
-	"content": " Mọi thứ là dữ liệu Cho ai còn chưa hiểu dữ liệu là gì. Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,.. Tóm lại, mọi thứ mang thông tin đều có dữ liệu.\nVậy cơ sở dữ liệu là gì? Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó. Người dùng có thể đọc, chỉnh sửa, xóa dữ liệu trên đó qua một công cụ quản lý.\nCó ví dụ nào dễ hiểu hơn không? Bạn có 1 cuốn sổ ghi lại những gì cần làm (To do List) Với cuổn sổ đó bạn có thể xem, sửa, xóa các việc trong danh sách đó.\nVậy:\n Việc cần làm là dữ liệu Các việc cần làm được tổ chức dưới dạng danh sách theo ngày là cơ dở dữ liệu. Cuốn sổ và cây bút là nơi lưu trữ và quản lý dữ liệu  "
+	"content": " Mọi thứ là dữ liệu Cho ai còn chưa hiểu dữ liệu là gì. Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,.. Tóm lại, mọi thứ mang thông tin đều có dữ liệu.\nVậy cơ sở dữ liệu là gì? Tiếng anh: Database Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó. Người dùng có thể đọc, chỉnh sửa, xóa dữ liệu trên đó qua một công cụ quản lý.\nCó ví dụ nào dễ hiểu hơn không? Bạn có 1 cuốn sổ ghi lại những gì cần làm (To do List) Với cuổn sổ đó bạn có thể xem, sửa, xóa các việc trong danh sách đó.\nVậy:\n Việc cần làm là dữ liệu Các việc cần làm được tổ chức dưới dạng danh sách theo ngày là cơ dở dữ liệu. Cuốn sổ và cây bút là nơi lưu trữ và quản lý dữ liệu  Cơ sở dữ liệu dạng bảng Có một cách biểu diễn dữ liệu rất phổ biến và trực quan đó là biểu diễn theo dạng bảng. Ví dụ ta có 1 bảng biểu diễn danh sách một lớp học như sau:\n   Mã SV Họ Tên Ngày sinh SĐT     20150311 Nguyễn Văn An 01/01/1997 0123456789   20136312 Trần Bảo Bình 02/03/1997 0131341414   20150362 Nguyễn Văn Chiến 06/03/1992 0466778899    Đây là một bảng dữ liệu với các cột (column) đại diện cho đặc điểm của đối tượng học sinh (Field, Attribute). Thông tin của một học sinh sẽ nằm trên cùng một hàng (row)\nTập hợp các bảng liên quan lại với nhau ta có được một Cơ sở dữ liệu\nTới đây ta có thể hình dung được 1 file excel cũng là một cơ sở dữ liệu. So easy, right?\n"
+},
+{
+	"uri": "/chapters/03-bang-du-lieu/gioi-thieu-sql/",
+	"title": "Giới thiệu SQL",
+	"tags": [],
+	"description": "",
+	"content": " SQL là gì? SQL = Structured Query Language\nSQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu. Hệ quản trị CSDL Tiếng anh: Database Management System - DBMS\nLà các chương trình/hệ thống được thiết kế để quản lý CSDL. Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.\nMột số DBMS phổ biến: MySQL, Oracle, PostreSQL, SQL Server,..\nCác DBMS phổ biến nói trên thường khá phức tạp để sử dụng. Để đơn giản, chúng ta sẽ sử dụng một DBMS nhỏ gọn hơn là SQLite\n Cài đặt SQLite Cài SQLite trên Ubuntu 18.04 khá đơn giản. Ta chạy câu lệnh sau:\nsudo apt-get update sudo apt-get install sqlite3  Có thể kiểm tra xem sqlite3 đã được cài đặt hay chưa\nsqlite3 --version  Kết quả: Cài đặt SQLite Browser Chúng ta sẽ cài thêm một công cụ GUI nữa giúp cho việc quản lý DB dễ dàng hơn:\nsudo apt-get install sqlitebrowser  Một phần mềm DB Browser for SQLite sẽ được cài vào máy, giao diện như sau:\nClick New Database và điền tên file database.sqlite3 (file này sẽ chứa dữ liệu). Lưu tại thư mục Home\nHệ thống sẽ hỏi về việc tạo thêm bảng mới, tạm thời ta bỏ qua và ấn Cancel\nOk, vậy là xong phần setup database!\n"
 },
 {
 	"uri": "/categories/",

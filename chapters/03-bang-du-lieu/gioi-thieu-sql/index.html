@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Categories :: 30 Days Python &amp; Flask</title>
+    <title>Giới thiệu SQL :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544122627" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/chapters/03-bang-du-lieu/gioi-thieu-sql/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -113,8 +113,8 @@
   
     
     <li data-nav-id="/chapters/" title="Chapters" class="dd-item 
+        parent
         
-        active
         
         ">
       <a href="/chapters/">
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/03-bang-du-lieu/" title="Bảng dữ liệu" class="dd-item 
-        
+        parent
         
         
         ">
@@ -187,7 +187,7 @@
  
   
     
-      <li data-nav-id="/chapters/03-bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item ">
+      <li data-nav-id="/chapters/03-bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item active">
         <a href="/chapters/03-bang-du-lieu/gioi-thieu-sql/">
         Giới thiệu SQL
         <i class="fas fa-check read-icon"></i>
@@ -265,6 +265,17 @@
               <div>
                 <div id="top-bar">
                 
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/03-bang-du-lieu/gioi-thieu-sql.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
                 
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
@@ -281,7 +292,25 @@
                     
           
           
-            Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Test hugo index</a> > <a href='/chapters/'>Chapters</a> > <a href='/chapters/03-bang-du-lieu/'>Bảng dữ liệu</a> > Giới thiệu SQL
+          
+         
+          
+         
+          
+         
           
         
                  
@@ -290,7 +319,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#sql-là-gì">SQL là gì?</a></li>
+<li><a href="#hệ-quản-trị-csdl">Hệ quản trị CSDL</a></li>
+<li><a href="#cài-đặt-sqlite">Cài đặt SQLite</a></li>
+<li><a href="#cài-đặt-sqlite-browser">Cài đặt SQLite Browser</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -302,7 +341,7 @@
         
         <div id="body-inner">
           
-            <h1>Categories</h1>
+            <h1>Giới thiệu SQL</h1>
           
 
         
@@ -310,9 +349,69 @@
 
 
 
+<h2 id="sql-là-gì">SQL là gì?</h2>
+
+<p><em>SQL = Structured Query Language</em></p>
+
+<p>SQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu.
+<img src="../sql-explain.png" alt="database table" /></p>
+
+<h2 id="hệ-quản-trị-csdl">Hệ quản trị CSDL</h2>
+
+<p><em>Tiếng anh:  Database Management System - DBMS</em></p>
+
+<p>Là các chương trình/hệ thống được thiết kế để quản lý CSDL.
+Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.</p>
+
+<p><strong>Một số DBMS phổ biến</strong>: MySQL, Oracle, PostreSQL, SQL Server,..</p>
+
+<div class="notices note" ><p>Các DBMS phổ biến nói trên thường khá phức tạp để sử dụng.
+Để đơn giản, chúng ta sẽ sử dụng một DBMS nhỏ gọn hơn là SQLite</p>
+</div>
+
+
+<h2 id="cài-đặt-sqlite">Cài đặt SQLite</h2>
+
+<p>Cài SQLite trên Ubuntu 18.04 khá đơn giản. Ta chạy câu lệnh sau:</p>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install sqlite3
+</code></pre>
+
+<p>Có thể kiểm tra xem sqlite3 đã được cài đặt hay chưa</p>
+
+<pre><code class="language-bash">sqlite3 --version
+</code></pre>
+
+<p>Kết quả:
+<img src="../demo-sqlite3-version.png" alt="sqlite3 version demo" /></p>
+
+<h2 id="cài-đặt-sqlite-browser">Cài đặt SQLite Browser</h2>
+
+<p>Chúng ta sẽ cài thêm một công cụ GUI nữa giúp cho việc quản lý DB dễ dàng hơn:</p>
+
+<pre><code class="language-bash">sudo apt-get install sqlitebrowser
+</code></pre>
+
+<p>Một phần mềm <strong>DB Browser for SQLite</strong> sẽ được cài vào máy, giao diện như sau:</p>
+
+<p><img src="../sqlite3-demo-gui.png" alt="sqlite3 gui demo" /></p>
+
+<p>Click <strong>New Database</strong> và điền tên file <code>database.sqlite3</code> (file này sẽ chứa dữ liệu). Lưu tại thư mục <strong>Home</strong></p>
+
+<p><img src="../new-database.png" alt="sqlite3 new table" /></p>
+
+<p>Hệ thống sẽ hỏi về việc tạo thêm bảng mới, tạm thời ta bỏ qua và ấn <strong>Cancel</strong></p>
+
+<p><img src="../cancel-table.png" alt="sqlite3 new table" /></p>
+
+<p>Ok, vậy là xong phần setup database!</p>
+
+
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -345,8 +444,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -363,6 +460,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -375,6 +473,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -391,6 +492,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -418,8 +520,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/chapters/" title="Chapters" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -458,3 +562,4 @@
 </script>
   </body>
 </html>
+
