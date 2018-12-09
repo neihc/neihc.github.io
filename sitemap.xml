@@ -3,18 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/chapters/03-bang-du-lieu/</loc>
-    <lastmod>2018-12-04T23:17:02+07:00</lastmod>
+    <loc>/chapters/flask-co-ban/</loc>
+    <lastmod>2018-12-09T16:19:54+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/</loc>
+    <loc>/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/</loc>
     <lastmod>2018-12-04T23:45:06+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/chapters/03-bang-du-lieu/gioi-thieu-sql/</loc>
+    <loc>/chapters/bang-du-lieu/gioi-thieu-sql/</loc>
     <lastmod>2018-12-05T23:26:59+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/chapters/bang-du-lieu/</loc>
+    <lastmod>2018-12-04T23:17:02+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/chapters/flask-co-ban/xay-dung-url/</loc>
+    <lastmod>2018-12-09T16:28:59+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/chapters/</loc>
   </url>
   
   <url>
@@ -23,18 +37,13 @@
   </url>
   
   <url>
-    <loc>/chapters/</loc>
-    <priority>0</priority>
+    <loc>/</loc>
+    <lastmod>2018-12-04T23:45:06+07:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2018-12-04T23:45:06+07:00</lastmod>
   </url>
   
 </urlset>

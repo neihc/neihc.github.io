@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>30 Ngày Flask :: 30 Days Python &amp; Flask</title>
+    <title>Xây dựng URL :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544351163" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/chapters/">
+  <body class="" data-url="/chapters/flask-co-ban/xay-dung-url/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -114,7 +114,7 @@
     
     <li data-nav-id="/chapters/" title="30 Ngày Flask" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="/chapters/">
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/flask-co-ban/" title="Flask cơ bản" class="dd-item 
-        
+        parent
         
         
         ">
@@ -168,7 +168,7 @@
  
   
     
-      <li data-nav-id="/chapters/flask-co-ban/xay-dung-url/" title="Xây dựng URL" class="dd-item ">
+      <li data-nav-id="/chapters/flask-co-ban/xay-dung-url/" title="Xây dựng URL" class="dd-item active">
         <a href="/chapters/flask-co-ban/xay-dung-url/">
         Xây dựng URL
         <i class="fas fa-check read-icon"></i>
@@ -324,7 +324,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/_index.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/flask-co-ban/xay-dung-url.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -351,7 +351,19 @@
             
           
           
-            <a href='/'>Học Python</a> > 30 Ngày Flask
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/flask-co-ban/'>Flask cơ bản</a> > Xây dựng URL
+          
+         
+          
+         
           
          
           
@@ -362,7 +374,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#kỹ-thuật-routing">Kỹ thuật Routing</a></li>
+<li><a href="#routing-với-flask">Routing với Flask</a></li>
+<li><a href="#app-route">@app.route</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -374,7 +395,7 @@
         
         <div id="body-inner">
           
-            <h1>30 Ngày Flask</h1>
+            <h1>Xây dựng URL</h1>
           
 
         
@@ -382,9 +403,104 @@
 
 
 
+<h2 id="kỹ-thuật-routing">Kỹ thuật Routing</h2>
+
+<p>Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.</p>
+
+<p>Kỹ thuật này rất đơn giản,
+Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý.
+<div class="mermaid" align="center">
+graph LR
+A[fa:fa-user Browser] -->|POST /users| C{Router}
+C -->|run this function| D[user_new]
+C -.-> E[user_index]
+C -.-> F[item_index]
+</div>
+</p>
+
+<h2 id="routing-với-flask">Routing với Flask</h2>
+
+<p>Chúng ta sẽ thử xem với Flask, ta sẽ thực hiện routing như thế nào.</p>
+
+<p>Gõ đoạn code sau và lưu lại với tên <code>app.py</code></p>
+
+<pre><code class="language-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route('/users')
+def user_index():
+    return 'Hello, this is user list'
+
+@app.route('/users', methods=['POST'])
+def user_new():
+    return 'Create new user'
+
+@app.route('/items', methods=['GET'])
+def item_index():
+    return 'This is item list'
+    
+if __name__ == '__main__':
+   app.run()
+</code></pre>
+
+<p>Chạy server:</p>
+
+<pre><code class="language-shell">python app.py 
+</code></pre>
+
+<pre><code> * Serving Flask app &quot;app&quot; (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</code></pre>
+
+<p>Tiếp theo chúng ta sẽ thử giả lập browser tạo 1 số request.
+Mở tab mới của terminal (thường là <code>Ctrl+Shift+T</code>) và chạy thử câu lệnh sau:</p>
+
+<pre><code class="language-bash">curl -X GET http://127.0.0.1:5000/users
+</code></pre>
+
+<p>Kết quả:</p>
+
+<pre><code>➜  ~ curl -X GET http://127.0.0.1:5000/users
+Hello, this is user list% 
+</code></pre>
+
+<div class="notices note" ><p>CURL là một phần mềm CLI (giao diện dòng lệnh) giúp gửi và nhận request.
+Bạn cũng có thể test API bằng phần mềm này!</p>
+</div>
+
+
+<p>Hãy thử lần lượt với <code>POST /users</code>, <code>GET /items</code> xem kết quả thế nào nhé.</p>
+
+<h2 id="app-route">@app.route</h2>
+
+<p>Nhìn lại đoạn code ở ví dụ trên, ta có thể hình dung cách sử dụng route trong flask như sau:</p>
+
+<pre><code class="language-python">@app.route(URL, methods)
+def some_function():
+    ...
+</code></pre>
+
+<p>Trong đó:</p>
+
+<ul>
+<li><p><strong>URL</strong> là đường dẫn được gán với hàm xử lý some_function()</p></li>
+
+<li><p><strong>Methods</strong> là một mảng Method được chấp nhận. Nếu không khai báo, Methods sẽ mặc định = [&lsquo;GET&rsquo;]</p></li>
+</ul>
+
+<div class="notices info" ><p>@app.route là một <strong>decorator</strong>, về cơ bản thì nó cần được đặt ở ngay trước phần khai báo hàm.</p>
+</div>
+
+
+
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -433,8 +549,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -448,6 +562,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -467,6 +582,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -523,10 +641,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Học Python"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/chapters/flask-co-ban/" title="Flask cơ bản"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/chapters/flask-co-ban/" title="Flask cơ bản" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/chapters/bang-du-lieu/" title="Bảng dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -565,3 +683,4 @@
 </script>
   </body>
 </html>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flask cơ bản on 30 Days Python &amp; Flask</title>
+    <link>/chapters/flask-co-ban/</link>
+    <description>Recent content in Flask cơ bản on 30 Days Python &amp; Flask</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 09 Dec 2018 16:19:54 +0700</lastBuildDate>
+    
+	<atom:link href="/chapters/flask-co-ban/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Xây dựng URL</title>
+      <link>/chapters/flask-co-ban/xay-dung-url/</link>
+      <pubDate>Sun, 09 Dec 2018 16:28:59 +0700</pubDate>
+      
+      <guid>/chapters/flask-co-ban/xay-dung-url/</guid>
+      <description>Kỹ thuật Routing Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.
+Kỹ thuật này rất đơn giản, Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.</description>
+    </item>
+    
+  </channel>
+</rss>

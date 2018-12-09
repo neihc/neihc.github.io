@@ -1,24 +1,45 @@
 [
 {
-	"uri": "/chapters/03-bang-du-lieu/",
-	"title": "Bảng dữ liệu",
+	"uri": "/chapters/flask-co-ban/",
+	"title": "Flask cơ bản",
 	"tags": [],
 	"description": "",
-	"content": " Ngày 03 Bảng dữ liệu Học cách tạo bảng với SQL và sử dụng SQL trong Python\n"
+	"content": " Ngày 03 Flask cơ bản Học cách sử dụng một số hàm cơ bản của Flask\n"
 },
 {
-	"uri": "/chapters/03-bang-du-lieu/gioi-thieu-co-so-du-lieu/",
+	"uri": "/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/",
 	"title": "Làm quen với cơ sở dữ liệu",
 	"tags": [],
 	"description": "",
 	"content": " Mọi thứ là dữ liệu Cho ai còn chưa hiểu dữ liệu là gì. Dữ liệu tồn tại quanh ta, nó có thể là tên một ai đó, là một số điện thoại, là hình ảnh, âm thanh,.. Tóm lại, mọi thứ mang thông tin đều có dữ liệu.\nVậy cơ sở dữ liệu là gì? Tiếng anh: Database Cơ sở dữ liệu là tập hợp các dữ liệu được tổ chức theo một cách nào đó. Người dùng có thể đọc, chỉnh sửa, xóa dữ liệu trên đó qua một công cụ quản lý.\nCó ví dụ nào dễ hiểu hơn không? Bạn có 1 cuốn sổ ghi lại những gì cần làm (To do List) Với cuổn sổ đó bạn có thể xem, sửa, xóa các việc trong danh sách đó.\nVậy:\n Việc cần làm là dữ liệu Các việc cần làm được tổ chức dưới dạng danh sách theo ngày là cơ dở dữ liệu. Cuốn sổ và cây bút là nơi lưu trữ và quản lý dữ liệu  Cơ sở dữ liệu dạng bảng Có một cách biểu diễn dữ liệu rất phổ biến và trực quan đó là biểu diễn theo dạng bảng. Ví dụ ta có 1 bảng biểu diễn danh sách một lớp học như sau:\n   Mã SV Họ Tên Ngày sinh SĐT     20150311 Nguyễn Văn An 01/01/1997 0123456789   20136312 Trần Bảo Bình 02/03/1997 0131341414   20150362 Nguyễn Văn Chiến 06/03/1992 0466778899    Đây là một bảng dữ liệu với các cột (column) đại diện cho đặc điểm của đối tượng học sinh (Field, Attribute). Thông tin của một học sinh sẽ nằm trên cùng một hàng (row)\nTập hợp các bảng liên quan lại với nhau ta có được một Cơ sở dữ liệu\nTới đây ta có thể hình dung được 1 file excel cũng là một cơ sở dữ liệu. So easy, right?\n"
 },
 {
-	"uri": "/chapters/03-bang-du-lieu/gioi-thieu-sql/",
+	"uri": "/chapters/bang-du-lieu/gioi-thieu-sql/",
 	"title": "Giới thiệu SQL",
 	"tags": [],
 	"description": "",
 	"content": " SQL là gì? SQL = Structured Query Language\nSQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu. Hệ quản trị CSDL Tiếng anh: Database Management System - DBMS\nLà các chương trình/hệ thống được thiết kế để quản lý CSDL. Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.\nMột số DBMS phổ biến: MySQL, Oracle, PostreSQL, SQL Server,..\nCác DBMS phổ biến nói trên thường khá phức tạp để sử dụng. Để đơn giản, chúng ta sẽ sử dụng một DBMS nhỏ gọn hơn là SQLite\n Cài đặt SQLite Cài SQLite trên Ubuntu 18.04 khá đơn giản. Ta chạy câu lệnh sau:\nsudo apt-get update sudo apt-get install sqlite3  Có thể kiểm tra xem sqlite3 đã được cài đặt hay chưa\nsqlite3 --version  Kết quả: Cài đặt SQLite Browser Chúng ta sẽ cài thêm một công cụ GUI nữa giúp cho việc quản lý DB dễ dàng hơn:\nsudo apt-get install sqlitebrowser  Một phần mềm DB Browser for SQLite sẽ được cài vào máy, giao diện như sau:\nClick New Database và điền tên file database.sqlite3 (file này sẽ chứa dữ liệu). Lưu tại thư mục Home\nHệ thống sẽ hỏi về việc tạo thêm bảng mới, tạm thời ta bỏ qua và ấn Cancel\nOk, vậy là xong phần setup database!\n"
+},
+{
+	"uri": "/chapters/bang-du-lieu/",
+	"title": "Bảng dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Ngày 04 Bảng dữ liệu Học cách tạo bảng với SQL và sử dụng SQL trong Python\n"
+},
+{
+	"uri": "/chapters/flask-co-ban/xay-dung-url/",
+	"title": "Xây dựng URL",
+	"tags": [],
+	"description": "",
+	"content": " Kỹ thuật Routing Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.\nKỹ thuật này rất đơn giản, Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.- E[user_index] C -.- F[item_index]  Routing với Flask Chúng ta sẽ thử xem với Flask, ta sẽ thực hiện routing như thế nào.\nGõ đoạn code sau và lưu lại với tên app.py\nfrom flask import Flask app = Flask(__name__) @app.route('/users') def user_index(): return 'Hello, this is user list' @app.route('/users', methods=['POST']) def user_new(): return 'Create new user' @app.route('/items', methods=['GET']) def item_index(): return 'This is item list' if __name__ == '__main__': app.run()  Chạy server:\npython app.py   * Serving Flask app \u0026quot;app\u0026quot; (lazy loading) * Environment: production WARNING: Do not use the development server in a production environment. Use a production WSGI server instead. * Debug mode: off * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)  Tiếp theo chúng ta sẽ thử giả lập browser tạo 1 số request. Mở tab mới của terminal (thường là Ctrl+Shift+T) và chạy thử câu lệnh sau:\ncurl -X GET http://127.0.0.1:5000/users  Kết quả:\n➜ ~ curl -X GET http://127.0.0.1:5000/users Hello, this is user list%  CURL là một phần mềm CLI (giao diện dòng lệnh) giúp gửi và nhận request. Bạn cũng có thể test API bằng phần mềm này!\n Hãy thử lần lượt với POST /users, GET /items xem kết quả thế nào nhé.\n@app.route Nhìn lại đoạn code ở ví dụ trên, ta có thể hình dung cách sử dụng route trong flask như sau:\n@app.route(URL, methods) def some_function(): ...  Trong đó:\n URL là đường dẫn được gán với hàm xử lý some_function()\n Methods là một mảng Method được chấp nhận. Nếu không khai báo, Methods sẽ mặc định = [\u0026lsquo;GET\u0026rsquo;]\n  @app.route là một decorator, về cơ bản thì nó cần được đặt ở ngay trước phần khai báo hàm.\n "
+},
+{
+	"uri": "/chapters/",
+	"title": "30 Ngày Flask",
+	"tags": [],
+	"description": "",
+	"content": ""
 },
 {
 	"uri": "/categories/",
@@ -28,11 +49,11 @@
 	"content": ""
 },
 {
-	"uri": "/chapters/",
-	"title": "Chapters",
+	"uri": "/",
+	"title": "Học Python",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Học Python "
 },
 {
 	"uri": "/tags/",
@@ -40,11 +61,4 @@
 	"tags": [],
 	"description": "",
 	"content": ""
-},
-{
-	"uri": "/",
-	"title": "Test hugo index",
-	"tags": [],
-	"description": "",
-	"content": " Test hugo Index "
 }]
