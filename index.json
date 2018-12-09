@@ -1,5 +1,19 @@
 [
 {
+	"uri": "/chapters/flask-co-ban/xay-dung-url/",
+	"title": "Xây dựng URL",
+	"tags": [],
+	"description": "",
+	"content": " Kỹ thuật Routing Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.\nKỹ thuật này rất đơn giản,\nMọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.- E[user_index] C -.- F[item_index]  Routing với Flask Chúng ta sẽ thử xem với Flask, ta sẽ thực hiện routing như thế nào.\nGõ đoạn code sau và lưu lại với tên app.py\nfrom flask import Flask app = Flask(__name__) @app.route('/users') def user_index(): return 'Hello, this is user list' @app.route('/users', methods=['POST']) def user_new(): return 'Create new user' @app.route('/items', methods=['GET']) def item_index(): return 'This is item list' if __name__ == '__main__': app.run()  Chạy server:\npython app.py   * Serving Flask app \u0026quot;app\u0026quot; (lazy loading) * Environment: production WARNING: Do not use the development server in a production environment. Use a production WSGI server instead. * Debug mode: off * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)  Tiếp theo chúng ta sẽ thử giả lập browser tạo 1 số request. Mở tab mới của terminal (thường là Ctrl+Shift+T) và chạy thử câu lệnh sau:\ncurl -X GET http://127.0.0.1:5000/users  Kết quả:\n➜ ~ curl -X GET http://127.0.0.1:5000/users Hello, this is user list%  CURL là một phần mềm CLI (giao diện dòng lệnh) giúp gửi và nhận request. Bạn cũng có thể test API bằng phần mềm này!\n Hãy thử lần lượt với POST /users, GET /items xem kết quả thế nào nhé.\n@app.route Nhìn lại đoạn code ở ví dụ trên, ta có thể hình dung cách sử dụng route trong flask như sau:\n@app.route(URL, methods) def some_function(): ...  Trong đó:\n URL là đường dẫn được gán với hàm xử lý some_function()\n Methods là một mảng Method được chấp nhận. Nếu không khai báo, Methods sẽ mặc định = [\u0026lsquo;GET\u0026rsquo;]\n  @app.route là một decorator, về cơ bản thì nó cần được đặt ở ngay trước phần khai báo hàm.\n "
+},
+{
+	"uri": "/chapters/flask-co-ban/url-nang-cao/",
+	"title": "URL nâng cao",
+	"tags": [],
+	"description": "",
+	"content": " URL Động Ở bài trước, ta đã học cách sử dụng routing cơ bản. Bài này ta sẽ tiếp cận với một vấn đề khó hơn: URL động\nTa cần định nghĩa URL trong `@app.route** để router có thể điều hướng chính xác. Vậy làm thế nào để xử lý với những URL có thể bị thay đổi?\nVí dụ Lưu file sau với tên hello.py\nfrom flask import Flask app = Flask(__name__) @app.route('/hello/\u0026lt;name\u0026gt;') def hello_name(name): return 'Hello %s!' % name if __name__ == '__main__': app.run(debug = True)  Chạy server python hello.py và thử một số request sau:\ncurl -X GET http://127.0.0.1:5000/hello/Chien Hello Chien!%  curl -X GET http://127.0.0.1:5000/hello/SomeNameSoLong Hello SomeNameSoLong!%  Làm thế nào? Một lần nữa nhìn vào code ta có thể dễ dàng nhận ra, ta có thể đưa biến vào URL bằng dấu \u0026lt;\u0026gt; như sau \u0026lt;variable_name\u0026gt;\nNhư ví dụ trên\n@app.route('/hello/\u0026lt;name\u0026gt;') def hello_name(name):  Khi user truy cập /hello/Chien thì \u0026lsquo;Chien\u0026rsquo; sẽ được gán vào biến name.\nKết quả ta có:\nHello Chien!  Mặc định biến URL sẽ có kiểu string. Ngoài ra, ta có thể định nghĩa kiểu dữ liệu cho biến với cấu trúc sau: \u0026lt;kiểu DL:Tên biến\u0026gt;\nVí dụ: \u0026lt;int:soNguyen\u0026gt; , \u0026lt;float:soThuc\u0026gt;\nBài tập Sử dụng URL động để xây dựng ứng dụng cộng, trừ 2 số nguyên\nKhi truy cập http://127.0.0.1:5000/sum/1/2\nKết quả trả về:\n1+2=3  Khi truy cập http://127.0.0.1:5000/sub/5/2\nKết quả trả về:\n5-2=3  "
+},
+{
 	"uri": "/chapters/flask-co-ban/",
 	"title": "Flask cơ bản",
 	"tags": [],
@@ -26,13 +40,6 @@
 	"tags": [],
 	"description": "",
 	"content": " Ngày 04 Bảng dữ liệu Học cách tạo bảng với SQL và sử dụng SQL trong Python\n"
-},
-{
-	"uri": "/chapters/flask-co-ban/xay-dung-url/",
-	"title": "Xây dựng URL",
-	"tags": [],
-	"description": "",
-	"content": " Kỹ thuật Routing Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.\nKỹ thuật này rất đơn giản, Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.- E[user_index] C -.- F[item_index]  Routing với Flask Chúng ta sẽ thử xem với Flask, ta sẽ thực hiện routing như thế nào.\nGõ đoạn code sau và lưu lại với tên app.py\nfrom flask import Flask app = Flask(__name__) @app.route('/users') def user_index(): return 'Hello, this is user list' @app.route('/users', methods=['POST']) def user_new(): return 'Create new user' @app.route('/items', methods=['GET']) def item_index(): return 'This is item list' if __name__ == '__main__': app.run()  Chạy server:\npython app.py   * Serving Flask app \u0026quot;app\u0026quot; (lazy loading) * Environment: production WARNING: Do not use the development server in a production environment. Use a production WSGI server instead. * Debug mode: off * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)  Tiếp theo chúng ta sẽ thử giả lập browser tạo 1 số request. Mở tab mới của terminal (thường là Ctrl+Shift+T) và chạy thử câu lệnh sau:\ncurl -X GET http://127.0.0.1:5000/users  Kết quả:\n➜ ~ curl -X GET http://127.0.0.1:5000/users Hello, this is user list%  CURL là một phần mềm CLI (giao diện dòng lệnh) giúp gửi và nhận request. Bạn cũng có thể test API bằng phần mềm này!\n Hãy thử lần lượt với POST /users, GET /items xem kết quả thế nào nhé.\n@app.route Nhìn lại đoạn code ở ví dụ trên, ta có thể hình dung cách sử dụng route trong flask như sau:\n@app.route(URL, methods) def some_function(): ...  Trong đó:\n URL là đường dẫn được gán với hàm xử lý some_function()\n Methods là một mảng Method được chấp nhận. Nếu không khai báo, Methods sẽ mặc định = [\u0026lsquo;GET\u0026rsquo;]\n  @app.route là một decorator, về cơ bản thì nó cần được đặt ở ngay trước phần khai báo hàm.\n "
 },
 {
 	"uri": "/chapters/",

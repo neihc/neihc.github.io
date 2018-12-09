@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/chapters/flask-co-ban/xay-dung-url/</loc>
+    <lastmod>2018-12-09T16:28:59+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/chapters/flask-co-ban/url-nang-cao/</loc>
+    <lastmod>2018-12-09T17:29:50+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/chapters/flask-co-ban/</loc>
     <lastmod>2018-12-09T16:19:54+07:00</lastmod>
   </url>
@@ -23,11 +33,6 @@
   </url>
   
   <url>
-    <loc>/chapters/flask-co-ban/xay-dung-url/</loc>
-    <lastmod>2018-12-09T16:28:59+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/chapters/</loc>
   </url>
   
@@ -38,7 +43,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-12-04T23:45:06+07:00</lastmod>
+    <lastmod>2018-12-09T16:28:59+07:00</lastmod>
   </url>
   
   <url>

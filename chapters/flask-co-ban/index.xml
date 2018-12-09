@@ -18,7 +18,20 @@
       
       <guid>/chapters/flask-co-ban/xay-dung-url/</guid>
       <description>Kỹ thuật Routing Routing (điều hướng) là một kỹ thuật cơ bản giúp truy cập 1 chức năng qua URL.
-Kỹ thuật này rất đơn giản, Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.</description>
+Kỹ thuật này rất đơn giản,
+Mọi request browser gửi tới đều đi qua một Router (bộ điều hướng), có tác dụng dựa vào URL và Method để định vị xem cần dùng hàm nào để xử lý. graph LR A[fa:fa-user Browser] --|POST /users| C{Router} C --|run this function| D[user_new] C -.</description>
+    </item>
+    
+    <item>
+      <title>URL nâng cao</title>
+      <link>/chapters/flask-co-ban/url-nang-cao/</link>
+      <pubDate>Sun, 09 Dec 2018 17:29:50 +0700</pubDate>
+      
+      <guid>/chapters/flask-co-ban/url-nang-cao/</guid>
+      <description>URL Động Ở bài trước, ta đã học cách sử dụng routing cơ bản. Bài này ta sẽ tiếp cận với một vấn đề khó hơn: URL động
+Ta cần định nghĩa URL trong `@app.route** để router có thể điều hướng chính xác. Vậy làm thế nào để xử lý với những URL có thể bị thay đổi?
+Ví dụ Lưu file sau với tên hello.py
+from flask import Flask app = Flask(__name__) @app.</description>
     </item>
     
   </channel>

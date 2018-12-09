@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Bảng dữ liệu :: 30 Days Python &amp; Flask</title>
+    <title>URL nâng cao :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544353101" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/chapters/bang-du-lieu/">
+  <body class="" data-url="/chapters/flask-co-ban/url-nang-cao/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/flask-co-ban/" title="Flask cơ bản" class="dd-item 
-        
+        parent
         
         
         ">
@@ -187,7 +187,7 @@
  
   
     
-      <li data-nav-id="/chapters/flask-co-ban/url-nang-cao/" title="URL nâng cao" class="dd-item ">
+      <li data-nav-id="/chapters/flask-co-ban/url-nang-cao/" title="URL nâng cao" class="dd-item active">
         <a href="/chapters/flask-co-ban/url-nang-cao/">
         URL nâng cao
         <i class="fas fa-check read-icon"></i>
@@ -216,8 +216,8 @@
   
     
     <li data-nav-id="/chapters/bang-du-lieu/" title="Bảng dữ liệu" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/chapters/bang-du-lieu/">
@@ -343,7 +343,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/bang-du-lieu/_index.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/flask-co-ban/url-nang-cao.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -357,6 +357,8 @@
                           <i class="fas fa-bars"></i>
                         </a>
                     </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
                   
                   <span class="links">
                  
@@ -372,7 +374,13 @@
             
           
           
-            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > Bảng dữ liệu
+            
+            
+          
+          
+            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/flask-co-ban/'>Flask cơ bản</a> > URL nâng cao
+          
+         
           
          
           
@@ -383,14 +391,31 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#url-động">URL Động</a></li>
+<li><a href="#ví-dụ">Ví dụ</a></li>
+<li><a href="#làm-thế-nào">Làm thế nào?</a></li>
+<li><a href="#bài-tập">Bài tập</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>URL nâng cao</h1>
           
 
         
@@ -398,19 +423,82 @@
 
 
 
-<h3 id="ngày-04">Ngày 04</h3>
+<h2 id="url-động">URL Động</h2>
 
-<h1 id="bảng-dữ-liệu">Bảng dữ liệu</h1>
+<p>Ở bài trước, ta đã học cách sử dụng routing cơ bản. Bài này ta sẽ tiếp cận với một vấn đề khó hơn: <strong>URL động</strong></p>
 
-<p>Học cách tạo bảng với SQL và sử dụng SQL trong Python</p>
+<p>Ta cần định nghĩa URL trong `@app.route** để router có thể điều hướng chính xác. Vậy làm thế nào để xử lý với những URL có thể bị thay đổi?</p>
+
+<h2 id="ví-dụ">Ví dụ</h2>
+
+<p>Lưu file sau với tên <code>hello.py</code></p>
+
+<pre><code class="language-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route('/hello/&lt;name&gt;')
+def hello_name(name):
+   return 'Hello %s!' % name
+
+if __name__ == '__main__':
+   app.run(debug = True)
+</code></pre>
+
+<p>Chạy server <code>python hello.py</code> và thử một số request sau:</p>
+
+<pre><code>curl -X GET http://127.0.0.1:5000/hello/Chien
+Hello Chien!%
+</code></pre>
+
+<pre><code>curl -X GET http://127.0.0.1:5000/hello/SomeNameSoLong
+Hello SomeNameSoLong!%
+</code></pre>
+
+<h2 id="làm-thế-nào">Làm thế nào?</h2>
+
+<p>Một lần nữa nhìn vào code ta có thể dễ dàng nhận ra, ta có thể đưa biến vào URL bằng dấu &lt;&gt; như sau <code>&lt;variable_name&gt;</code></p>
+
+<p>Như ví dụ trên</p>
+
+<pre><code>@app.route('/hello/&lt;name&gt;')
+def hello_name(name):
+</code></pre>
+
+<p>Khi user truy cập /hello/Chien thì &lsquo;Chien&rsquo; sẽ được gán vào biến <code>name</code>.</p>
+
+<p>Kết quả ta có:</p>
+
+<pre><code>Hello Chien!
+</code></pre>
+
+<p>Mặc định biến URL sẽ có kiểu string. Ngoài ra, ta có thể định nghĩa kiểu dữ liệu cho biến với cấu trúc sau: <code>&lt;kiểu DL:Tên biến&gt;</code></p>
+
+<p>Ví dụ: <code>&lt;int:soNguyen&gt;</code> , <code>&lt;float:soThuc&gt;</code></p>
+
+<h2 id="bài-tập">Bài tập</h2>
+
+<p>Sử dụng URL động để xây dựng ứng dụng cộng, trừ 2 số nguyên</p>
+
+<p>Khi truy cập <a href="http://127.0.0.1:5000/sum/1/2">http://127.0.0.1:5000/sum/1/2</a></p>
+
+<p>Kết quả trả về:</p>
+
+<pre><code>1+2=3
+</code></pre>
+
+<p>Khi truy cập <a href="http://127.0.0.1:5000/sub/5/2">http://127.0.0.1:5000/sub/5/2</a></p>
+
+<p>Kết quả trả về:</p>
+
+<pre><code>5-2=3
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div> 
         
@@ -458,8 +546,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -474,21 +560,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -501,6 +574,23 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -509,6 +599,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -522,9 +614,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -568,10 +657,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/chapters/flask-co-ban/url-nang-cao/" title="URL nâng cao"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/chapters/flask-co-ban/xay-dung-url/" title="Xây dựng URL"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/chapters/bang-du-lieu/" title="Bảng dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -610,3 +699,4 @@
 </script>
   </body>
 </html>
+
