@@ -35,6 +35,17 @@ from flask import Flask app = Flask(__name__) @app.</description>
     </item>
     
     <item>
+      <title>Giới thiệu Template</title>
+      <link>/chapters/flask-co-ban/gioi-thieu-template/</link>
+      <pubDate>Sun, 09 Dec 2018 19:35:11 +0700</pubDate>
+      
+      <guid>/chapters/flask-co-ban/gioi-thieu-template/</guid>
+      <description>Giải bài phần trước from flask import Flask app = Flask(__name__) @app.route(&#39;/sum/&amp;lt;int:a&amp;gt;/&amp;lt;int:b&amp;gt;&#39;) def sum(a,b): return &#39;%s + %s = %s&#39; % (a, b, a+b) @app.route(&#39;/sub/&amp;lt;int:a&amp;gt;/&amp;lt;int:b&amp;gt;&#39;) def sub(a,b): return &#39;%s - %s = %s&#39; % (a, b, a-b) if __name__ == &#39;__main__&#39;: app.run(debug = True)  Giới thiệu Chúng ta cùng thử nghiệm một demo nhỏ như sau:
+Lưu lại với file hello.py:
+from flask import Flask app = Flask(__name__) @app.</description>
+    </item>
+    
+    <item>
       <title>Làm quen với cơ sở dữ liệu</title>
       <link>/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/</link>
       <pubDate>Tue, 04 Dec 2018 23:45:06 +0700</pubDate>

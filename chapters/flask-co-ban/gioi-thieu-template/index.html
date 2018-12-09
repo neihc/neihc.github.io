@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Tags :: 30 Days Python &amp; Flask</title>
+    <title>Giới thiệu Template :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544365991" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/chapters/flask-co-ban/gioi-thieu-template/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -113,7 +113,7 @@
   
     
     <li data-nav-id="/chapters/" title="30 Ngày Flask" class="dd-item 
-        
+        parent
         
         
         ">
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/flask-co-ban/" title="Flask cơ bản" class="dd-item 
-        
+        parent
         
         
         ">
@@ -206,7 +206,7 @@
  
   
     
-      <li data-nav-id="/chapters/flask-co-ban/gioi-thieu-template/" title="Giới thiệu Template" class="dd-item ">
+      <li data-nav-id="/chapters/flask-co-ban/gioi-thieu-template/" title="Giới thiệu Template" class="dd-item active">
         <a href="/chapters/flask-co-ban/gioi-thieu-template/">
         Giới thiệu Template
         <i class="fas fa-check read-icon"></i>
@@ -358,6 +358,17 @@
               <div>
                 <div id="top-bar">
                 
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/flask-co-ban/gioi-thieu-template.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
                 
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
@@ -374,7 +385,25 @@
                     
           
           
-            Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/flask-co-ban/'>Flask cơ bản</a> > Giới thiệu Template
+          
+         
+          
+         
+          
+         
           
         
                  
@@ -383,7 +412,23 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#giải-bài-phần-trước">Giải bài phần trước</a></li>
+</ul></li>
+<li><a href="#giới-thiệu">Giới thiệu</a></li>
+<li><a href="#thử-sử-dụng-template">Thử sử dụng Template</a></li>
+<li><a href="#điều-gì-đã-xảy-ra">Điều gì đã xảy ra?</a></li>
+<li><a href="#truyền-dữ-liệu">Truyền dữ liệu</a></li>
+<li><a href="#tổng-kết">Tổng kết</a></li>
+<li><a href="#bài-tập">Bài tập</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -395,7 +440,7 @@
         
         <div id="body-inner">
           
-            <h1>Tags</h1>
+            <h1>Giới thiệu Template</h1>
           
 
         
@@ -403,9 +448,176 @@
 
 
 
+<h3 id="giải-bài-phần-trước">Giải bài phần trước</h3>
+
+<pre><code class="language-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route('/sum/&lt;int:a&gt;/&lt;int:b&gt;')
+def sum(a,b):
+   return '%s + %s = %s' % (a, b, a+b)
+
+@app.route('/sub/&lt;int:a&gt;/&lt;int:b&gt;')
+def sub(a,b):
+   return '%s - %s = %s' % (a, b, a-b)
+
+if __name__ == '__main__':
+   app.run(debug = True)
+</code></pre>
+
+<h2 id="giới-thiệu">Giới thiệu</h2>
+
+<p>Chúng ta cùng thử nghiệm một demo nhỏ như sau:</p>
+
+<p>Lưu lại với file <code>hello.py</code>:</p>
+
+<pre><code class="language-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+   return '&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;'
+
+if __name__ == '__main__':
+   app.run(debug = True)
+</code></pre>
+
+<p>Chạy server: <code>python hello.py</code></p>
+
+<p>Kết quả:
+<img src="../assets/markdown-img-paste-2018120920181781.png?classes=border" alt="ket-qua" /></p>
+
+<p>Như vậy, ta có thể sử dụng HTML ngay trong phần return của hàm.</p>
+
+<p>Tuy nhiên, khi mà HTML trở nên phức tạp. Ta sẽ gặp khó khăn trong việc phải sử dụng một đống các hàm xử lý xâu, vòng lặp để tạo ra 1 xâu HTML như ý để trả về cho browser.</p>
+
+<p>Ngoài ra, code frontend và backend bị mix với nhau cũng khá là khó chịu và xấu (smell code)</p>
+
+<p>Vì thế ta sẽ đến với 1 phương pháp tốt hơn, gọi là <strong>Template</strong></p>
+
+<h2 id="thử-sử-dụng-template">Thử sử dụng Template</h2>
+
+<p>Đầu tiên sửa lại file <code>hello.py</code> như sau:</p>
+
+<pre><code class="language-python">from flask import Flask
+from flask import render_template
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+   return render_template('hello.html')
+
+if __name__ == '__main__':
+   app.run(debug = True)
+</code></pre>
+
+<p>Tiếp theo, tạo 1 thư mục <code>templates</code> ngang hàng với file <code>hello.py</code></p>
+
+<p>Tạo tiếp 1 file <code>hello.html</code> trong thư mục <code>templates</code>:</p>
+
+<pre><code class="language-HTML">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Cây thư mục sẽ như sau nếu bạn tạo đúng:</p>
+
+<pre><code>├── hello.py
+└── templates
+    └── hello.html
+</code></pre>
+
+<p>Chạy server <code>python hello.py</code>. Ta đã tách phần HTML ra 1 file khác nhưng kết quả vẫn không đổi.</p>
+
+<p><img src="../assets/markdown-img-paste-2018120920181781.png?classes=border" alt="ket-qua" /></p>
+
+<h2 id="điều-gì-đã-xảy-ra">Điều gì đã xảy ra?</h2>
+
+<p>Đầu tiên, hàm <code>render_template</code> ta sử dụng ở dòng sau:</p>
+
+<pre><code class="language-python">    return render_template('hello.html')
+</code></pre>
+
+<p>không phải là một hàm có sẵn (built-in function) của python. Vì thế mà ta cần dòng lệnh import này:</p>
+
+<pre><code class="language-python">from flask import render_template
+</code></pre>
+
+<div class="notices tip" ><p>Các lệnh <em>import</em> có thể đặt ở bất cứ đâu. Tuy nhiên, chúng thường được đặt ở ngay đầu file.</p>
+</div>
+
+
+<p>Nhiệm vụ của hàm <code>render_template</code> là tìm kiếm trong thư mục <code>templates</code> xem có file nào tên là <code>hello.html</code> hay không.</p>
+
+<p>Nếu có, nó sẽ lấy ra và <em>truyền dữ liệu</em> vào nếu cần thiết. Cuối cùng là trả về  1 nội dung HTML hoàn chỉnh.</p>
+
+<p>Nếu không, nó sẽ báo lỗi.</p>
+
+<div class="mermaid" align="center">
+graph LR
+A{Find template file} -->|Found it| B(fa:fa-spinner Fill data)
+B --> C(return html code)
+A -->|Not found| D(fa:fa-ban Raise an error)
+</div>
+
+
+<h2 id="truyền-dữ-liệu">Truyền dữ liệu</h2>
+
+<p>Phần trước có đề cập đến <em>truyền dữ liệu</em>, vậy truyền dữ liệu là như thế nào?</p>
+
+<p>Ta sửa file <code>templates/hello.html</code> như sau:</p>
+
+<pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello {{ name }}&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Sửa tiếp file <code>hello.py</code>:</p>
+
+<pre><code class="language-python">    return render_template('hello.html', name='Chien')
+</code></pre>
+
+<p>Chạy server <code>python hello.py</code> và xem kết quả, lần này ta dùng <code>curl http://127.0.0.1:5000/</code></p>
+
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello Chien&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;%
+</code></pre>
+
+<p><code>{{ name }}</code> đã được thay bằng <code>Chien</code>. Như vậy công đoạn truyền dữ liệu tức là đưa dữ liệu thật từ bên ngoài vào trong template.</p>
+
+<h2 id="tổng-kết">Tổng kết</h2>
+
+<p>Khái quát lại, ta có cấu trúc của hàm <code>render_template</code> như sau:</p>
+
+<pre><code>render_template(template_file[, var1, var2,..])
+</code></pre>
+
+<div class="notices note" ><p>Dấu <code>[...]</code> trong cấu trúc có nghĩa là có thể có hoặc không (không bắt buộc).</p>
+</div>
+
+
+<div class="notices tip" ><p>Số lượng biến truyền vào hàm <em>render_template</em> là vô hạn. Có thể truyền nhiều kiểu dữ liệu (list, dict, ..), không nhất thiết phải là string</p>
+</div>
+
+
+<h2 id="bài-tập">Bài tập</h2>
+
+<p>Áp dụng render_template vào bài tập phần trước.</p>
+
+<p>Yêu cầu chỉ sử dụng <strong>một file template</strong> cho cả 2 hàm sum và sub.</p>
+
+
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -438,8 +650,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -456,6 +666,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -468,6 +679,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -501,6 +715,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -519,6 +734,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -575,8 +793,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/chapters/flask-co-ban/url-nang-cao/" title="URL nâng cao"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/chapters/" title="30 Ngày Flask" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/chapters/bang-du-lieu/" title="Bảng dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -615,3 +835,4 @@
 </script>
   </body>
 </html>
+
