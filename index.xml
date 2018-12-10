@@ -46,6 +46,28 @@ from flask import Flask app = Flask(__name__) @app.</description>
     </item>
     
     <item>
+      <title>Static File</title>
+      <link>/chapters/flask-co-ban/static-file/</link>
+      <pubDate>Sun, 09 Dec 2018 22:19:02 +0700</pubDate>
+      
+      <guid>/chapters/flask-co-ban/static-file/</guid>
+      <description>Giải bài phần trước: File app.py:
+from flask import Flask from flask import render_template app = Flask(__name__) @app.route(&#39;/sum/&amp;lt;int:a&amp;gt;/&amp;lt;int:b&amp;gt;&#39;) def sum(a, b): return render_template(&#39;ketqua.html&#39;, a=a, b=b, c=a+b, phep=&#39;+&#39;) @app.route(&#39;/sub/&amp;lt;int:a&amp;gt;/&amp;lt;int:b&amp;gt;&#39;) def sub(a, b): return render_template(&#39;ketqua.html&#39;, a=a, b=b, c=a-b, phep=&#39;-&#39;) if __name__ == &#39;__main__&#39;: app.run(debug = True)  File templates/ketqua.html
+&amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;{{ a }} {{ phep }} {{ b }} = {{ c }}&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  File tĩnh/File tài nguyên Các ứng dụng web thường cần thêm những file tĩnh (như file css, javascript,.</description>
+    </item>
+    
+    <item>
+      <title>Làm quen với object request</title>
+      <link>/chapters/flask-co-ban/lam-quen-voi-request/</link>
+      <pubDate>Sun, 09 Dec 2018 23:02:43 +0700</pubDate>
+      
+      <guid>/chapters/flask-co-ban/lam-quen-voi-request/</guid>
+      <description>Request Object Như đã biết, các thông tin mà browser gửi lên server được chứa trong Request Vậy làm sao để lấy các dữ liệu đó ra?
+Flask cung cấp một object gọi là request, chứa các thông tin sau:
+ form: là một dictionary chứa key và value là các tham số (parameters) và giá trị của chúng args: chứa nội dung của câu query qua URL (những nội dung sau dấu ?</description>
+    </item>
+    
+    <item>
       <title>Làm quen với cơ sở dữ liệu</title>
       <link>/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/</link>
       <pubDate>Tue, 04 Dec 2018 23:45:06 +0700</pubDate>

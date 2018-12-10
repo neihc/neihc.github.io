@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Giới thiệu SQL :: 30 Days Python &amp; Flask</title>
+    <title>Làm quen với object request :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544407253" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/chapters/bang-du-lieu/gioi-thieu-sql/">
+  <body class="" data-url="/chapters/flask-co-ban/lam-quen-voi-request/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/flask-co-ban/" title="Flask cơ bản" class="dd-item 
-        
+        parent
         
         
         ">
@@ -244,7 +244,7 @@
  
   
     
-      <li data-nav-id="/chapters/flask-co-ban/lam-quen-voi-request/" title="Làm quen với object request" class="dd-item ">
+      <li data-nav-id="/chapters/flask-co-ban/lam-quen-voi-request/" title="Làm quen với object request" class="dd-item active">
         <a href="/chapters/flask-co-ban/lam-quen-voi-request/">
         Làm quen với object request
         <i class="fas fa-check read-icon"></i>
@@ -273,7 +273,7 @@
   
     
     <li data-nav-id="/chapters/bang-du-lieu/" title="Bảng dữ liệu" class="dd-item 
-        parent
+        
         
         
         ">
@@ -318,7 +318,7 @@
  
   
     
-      <li data-nav-id="/chapters/bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item active">
+      <li data-nav-id="/chapters/bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item ">
         <a href="/chapters/bang-du-lieu/gioi-thieu-sql/">
         Giới thiệu SQL
         <i class="fas fa-check read-icon"></i>
@@ -400,7 +400,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/bang-du-lieu/gioi-thieu-sql.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/flask-co-ban/lam-quen-voi-request.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -435,7 +435,7 @@
             
           
           
-            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/bang-du-lieu/'>Bảng dữ liệu</a> > Giới thiệu SQL
+            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/flask-co-ban/'>Flask cơ bản</a> > Làm quen với object request
           
          
           
@@ -454,10 +454,20 @@
 <ul>
 <li>
 <ul>
-<li><a href="#sql-là-gì">SQL là gì?</a></li>
-<li><a href="#hệ-quản-trị-csdl">Hệ quản trị CSDL</a></li>
-<li><a href="#cài-đặt-sqlite">Cài đặt SQLite</a></li>
-<li><a href="#cài-đặt-sqlite-browser">Cài đặt SQLite Browser</a></li>
+<li><a href="#request-object">Request Object</a></li>
+<li><a href="#duyệt-dữ-liệu-trong-dictionary">Duyệt dữ liệu trong dictionary</a></li>
+<li><a href="#thử-nghiệm">Thử nghiệm</a>
+<ul>
+<li>
+<ul>
+<li><a href="#chuẩn-bị-template">Chuẩn bị template</a></li>
+<li><a href="#thay-dữ-liệu">Thay dữ liệu:</a></li>
+<li><a href="#sửa-lại-route">Sửa lại route</a></li>
+<li><a href="#cài-đặt-postman">Cài đặt Postman</a></li>
+<li><a href="#bắt-đầu-thử-nghiệm">Bắt đầu thử nghiệm:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bài-tập">Bài tập:</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -472,7 +482,7 @@
         
         <div id="body-inner">
           
-            <h1>Giới thiệu SQL</h1>
+            <h1>Làm quen với object request</h1>
           
 
         
@@ -480,63 +490,245 @@
 
 
 
-<h2 id="sql-là-gì">SQL là gì?</h2>
+<h2 id="request-object">Request Object</h2>
 
-<p><em>SQL = Structured Query Language</em></p>
+<p>Như đã biết, các thông tin mà browser gửi lên server được chứa trong <strong>Request</strong>
+Vậy làm sao để lấy các dữ liệu đó ra?</p>
 
-<p>SQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu.
-<img src="../sql-explain.png" alt="database table" /></p>
+<p>Flask cung cấp một object gọi là <code>request</code>, chứa các thông tin sau:</p>
 
-<h2 id="hệ-quản-trị-csdl">Hệ quản trị CSDL</h2>
+<ul>
+<li><strong>form</strong>: là một dictionary chứa key và value là các tham số (parameters) và giá trị của chúng</li>
+<li><strong>args</strong>: chứa nội dung của câu query qua URL (những nội dung sau dấu ? trên URL)</li>
+<li><strong>cookies</strong>: dictionary chứa nội dung của cookies</li>
+<li><strong>files</strong>: dữ liệu liên quan tới upload file</li>
+<li><strong>method</strong>: method của request</li>
+</ul>
 
-<p><em>Tiếng anh:  Database Management System - DBMS</em></p>
+<p>Đừng lo lắng, chúng ta sẽ thử một số thứ ngay bây giờ!</p>
 
-<p>Là các chương trình/hệ thống được thiết kế để quản lý CSDL.
-Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.</p>
+<h2 id="duyệt-dữ-liệu-trong-dictionary">Duyệt dữ liệu trong dictionary</h2>
 
-<p><strong>Một số DBMS phổ biến</strong>: MySQL, Oracle, PostreSQL, SQL Server,..</p>
+<p>Đầu tiên ta ôn lại một chút về cách duyệt dữ liệu trong dictionary:</p>
 
-<div class="notices note" ><p>Các DBMS phổ biến nói trên thường khá phức tạp để sử dụng.
-Để đơn giản, chúng ta sẽ sử dụng một DBMS nhỏ gọn hơn là SQLite</p>
-</div>
+<p>Lưu file này lại và chạy thử:</p>
 
+<pre><code class="language-python">person = {
+    'name': 'Nguyen Van Chien',
+    'age': 20,
+    'address': 'Ha noi, Viet Nam',
+    'job': 'Web Developer'
+}
 
-<h2 id="cài-đặt-sqlite">Cài đặt SQLite</h2>
+print 'Step 1. Get all keys of this dict:'
+print str(person.keys())
 
-<p>Cài SQLite trên Ubuntu 18.04 khá đơn giản. Ta chạy câu lệnh sau:</p>
+print 'So, person.keys() return a list which contains all keys of it'
+print '---'
+print 'Step 2. Get all keys and values:'
+for key in person.keys():
+  # for each key
+  print '%s: %s' % (key, person[key])
 
-<pre><code class="language-bash">sudo apt-get update
-sudo apt-get install sqlite3
 </code></pre>
 
-<p>Có thể kiểm tra xem sqlite3 đã được cài đặt hay chưa</p>
+<p>Kết quả:</p>
 
-<pre><code class="language-bash">sqlite3 --version
+<pre><code>Step 1. Get all keys of this dict:
+['job', 'age', 'name', 'address']
+So, person.keys return a list which contain all keys of person
+---
+Step 2. Get all keys and values:
+job: Web Developer
+age: 20
+name: Nguyen Van Chien
+address: Ha noi, Viet Nam
 </code></pre>
+
+<p>Như vậy, cơ bản ta có thể duyệt tất cả các dữ liệu trong 1 dict <code>tudien</code> như sau:</p>
+
+<pre><code class="language-python">for key in tudien.keys():
+    print '%s: %s' % (key, tudien[key])
+</code></pre>
+
+<p>Cách khác:</p>
+
+<pre><code class="language-python">for key, value in tudien.items():
+    print '%s: %s' % (key, value)
+</code></pre>
+
+<h2 id="thử-nghiệm">Thử nghiệm</h2>
+
+<p>Ở phần này ta sẽ xem thử form, args, method hoạt động như thế nào.</p>
+
+<h4 id="chuẩn-bị-template">Chuẩn bị template</h4>
+
+<p>Sửa lại file <code>hello.html</code> thành như sau:</p>
+
+<pre><code class="language-HTML">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ url_for('static', filename = 'style.css') }}&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Method --&gt;
+    &lt;h1&gt;Method: POST&lt;/h1&gt;
+
+    &lt;!-- Request --&gt;
+    &lt;h1&gt;Request&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Key&lt;/th&gt;
+        &lt;th&gt;Value&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;some key&lt;/th&gt;
+        &lt;th&gt;some value&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- Args --&gt;
+    &lt;h2&gt;Args&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Key&lt;/th&gt;
+        &lt;th&gt;Value&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;some key&lt;/th&gt;
+        &lt;th&gt;some value&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Chạy thử:</p>
+
+<p><img src="../assets/markdown-img-paste-20181209233919320.png?classes=bordered" alt="ket qua" /></p>
+
+<p>Ok, vậy là ta đã có 1 template khá ổn để thử nghiệm.</p>
+
+<h4 id="thay-dữ-liệu">Thay dữ liệu:</h4>
+
+<p>Sửa file <code>hello.html</code> như sau:</p>
+
+<pre><code class="language-HTML">...
+&lt;!-- Method --&gt;
+&lt;h1&gt;Method: {{ request.method }}&lt;/h1&gt;
+
+&lt;!-- Request --&gt;
+&lt;h1&gt;Request&lt;/h1&gt;
+&lt;table border=1&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Key&lt;/th&gt;
+    &lt;th&gt;Value&lt;/th&gt;
+  &lt;/tr&gt;
+  {% for key, value in request.form.items() %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ key }}&lt;/td&gt;
+      &lt;td&gt;{{ value }}&lt;/td&gt;
+    &lt;/tr&gt;
+  {% endfor %}
+&lt;/table&gt;
+
+&lt;!-- Args --&gt;
+&lt;h1&gt;Args&lt;/h1&gt;
+&lt;table border=1&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Key&lt;/th&gt;
+    &lt;th&gt;Value&lt;/th&gt;
+  &lt;/tr&gt;
+  {% for key, value in request.args.items() %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ key }}&lt;/td&gt;
+      &lt;td&gt;{{ value }}&lt;/td&gt;
+    &lt;/tr&gt;
+  {% endfor %}
+&lt;/table&gt;
+...
+</code></pre>
+
+<p>Chúng ta có gì mới nào?</p>
+
+<p>Với vòng for ở python như thế này:</p>
+
+<pre><code class="language-python">for key, value in request.args.items():
+  print '&lt;tr&gt;'
+  print '&lt;td&gt;%s&lt;/td&gt;' % key
+  print '&lt;td&gt;%s&lt;/td&gt;' % value
+  print '&lt;/tr&gt;'
+</code></pre>
+
+<p>Vào trong template sẽ thành như thế này:</p>
+
+<pre><code class="language-html">{% for key, value in request.args.items() %}
+  &lt;tr&gt;
+    &lt;td&gt;{{ key }}&lt;/td&gt;
+    &lt;td&gt;{{ value }}&lt;/td&gt;
+  &lt;/tr&gt;
+{% endfor %}
+</code></pre>
+
+<p>Dễ nhìn và trong sáng hơn nhiều phải không nào?</p>
+
+<h4 id="sửa-lại-route">Sửa lại route</h4>
+
+<p>Phần thử nghiệm ta sẽ gửi cả request dạng GET và POST, vì thế ta cần sửa lại route một chút để chấp nhận cả 2 loại request này:</p>
+
+<p>Sửa file <code>hello.py</code></p>
+
+<pre><code>...
+@app.route('/', methods=['GET', 'POST'])
+def hello():
+...
+</code></pre>
+
+<h4 id="cài-đặt-postman">Cài đặt Postman</h4>
+
+<p>Ta sẽ dùng Postman để giả lập request, vậy nên nếu chưa có thì cài ngay đi nhé!</p>
+
+<h4 id="bắt-đầu-thử-nghiệm">Bắt đầu thử nghiệm:</h4>
+
+<p>Ta sẽ thử bắn 1 số request với Postman để xem method, form, args là gì?</p>
+
+<p>Đầu tiên:
+<img src="../assets/postman-request-1.png?classes=bordered" alt="ket qua" /></p>
+
+<p>Kết quả (xem ở phần <em>Preview</em>):
+<img src="../assets/postman-response-1.png?classes=bordered" alt="ket qua" /></p>
+
+<p>Như vậy:</p>
+
+<ul>
+<li><code>request.method</code> chính là method của request gửi lên.</li>
+<li><code>request.form</code> chứa dữ liệu ở phần body của request (dưới dạng dictionary)</li>
+</ul>
+
+<p>Tiếp theo:
+<img src="../assets/postman-request-2.png?classes=bordered" alt="ket qua" /></p>
 
 <p>Kết quả:
-<img src="../demo-sqlite3-version.png" alt="sqlite3 version demo" /></p>
+<img src="../assets/postman-response-2.png?classes=bordered" alt="ket qua" /></p>
 
-<h2 id="cài-đặt-sqlite-browser">Cài đặt SQLite Browser</h2>
+<p>Ta có thể thấy <code>request.args</code> đã lấy phần URL của request <strong>?city=Ha Noi&amp;country=Viet Nam</strong> và chuyển thành dạng dict như sau:</p>
 
-<p>Chúng ta sẽ cài thêm một công cụ GUI nữa giúp cho việc quản lý DB dễ dàng hơn:</p>
-
-<pre><code class="language-bash">sudo apt-get install sqlitebrowser
+<pre><code>{
+  'city': 'Ha Noi',
+  'country': 'Viet Nam'
+}
 </code></pre>
 
-<p>Một phần mềm <strong>DB Browser for SQLite</strong> sẽ được cài vào máy, giao diện như sau:</p>
+<h2 id="bài-tập">Bài tập:</h2>
 
-<p><img src="../sqlite3-demo-gui.png" alt="sqlite3 gui demo" /></p>
+<p>Viết CT Sau khi nhận request như sau:
+<img src="../assets/postman-request-1.png?classes=bordered" alt="ket qua" /></p>
 
-<p>Click <strong>New Database</strong> và điền tên file <code>database.sqlite3</code> (file này sẽ chứa dữ liệu). Lưu tại thư mục <strong>Home</strong></p>
+<p>Thì in ra kết quả sau:
+<img src="../assets/bai-tap-request-demo.png?classes=bordered" alt="ket qua" /></p>
 
-<p><img src="../new-database.png" alt="sqlite3 new table" /></p>
+<div class="notices info" ><p>Chỉ in ra tên của người nhập, không in họ</p>
+</div>
 
-<p>Hệ thống sẽ hỏi về việc tạo thêm bảng mới, tạm thời ta bỏ qua và ấn <strong>Cancel</strong></p>
-
-<p><img src="../cancel-table.png" alt="sqlite3 new table" /></p>
-
-<p>Ok, vậy là xong phần setup database!</p>
 
 
 <footer class=" footline" >
@@ -591,6 +783,20 @@ sudo apt-get install sqlite3
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
                         
                         
                     
@@ -601,6 +807,9 @@ sudo apt-get install sqlite3
                     
                     
 
+                    
+            
+        
                     
                         
             
@@ -655,21 +864,6 @@ sudo apt-get install sqlite3
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -690,6 +884,8 @@ sudo apt-get install sqlite3
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -703,9 +899,6 @@ sudo apt-get install sqlite3
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -722,7 +915,6 @@ sudo apt-get install sqlite3
             
             
                 
-                    
                     
                 
                 
@@ -750,10 +942,10 @@ sudo apt-get install sqlite3
 	 
 	 
 		
-			<a class="nav nav-prev" href="/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/chapters/flask-co-ban/static-file/" title="Static File"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/chapters/bang-du-lieu/" title="Bảng dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Giới thiệu SQL :: 30 Days Python &amp; Flask</title>
+    <title>Static File :: 30 Days Python &amp; Flask</title>
 
     
     <link href="/css/nucleus.css?1544407253" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/chapters/bang-du-lieu/gioi-thieu-sql/">
+  <body class="" data-url="/chapters/flask-co-ban/static-file/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/chapters/flask-co-ban/" title="Flask cơ bản" class="dd-item 
-        
+        parent
         
         
         ">
@@ -225,7 +225,7 @@
  
   
     
-      <li data-nav-id="/chapters/flask-co-ban/static-file/" title="Static File" class="dd-item ">
+      <li data-nav-id="/chapters/flask-co-ban/static-file/" title="Static File" class="dd-item active">
         <a href="/chapters/flask-co-ban/static-file/">
         Static File
         <i class="fas fa-check read-icon"></i>
@@ -273,7 +273,7 @@
   
     
     <li data-nav-id="/chapters/bang-du-lieu/" title="Bảng dữ liệu" class="dd-item 
-        parent
+        
         
         
         ">
@@ -318,7 +318,7 @@
  
   
     
-      <li data-nav-id="/chapters/bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item active">
+      <li data-nav-id="/chapters/bang-du-lieu/gioi-thieu-sql/" title="Giới thiệu SQL" class="dd-item ">
         <a href="/chapters/bang-du-lieu/gioi-thieu-sql/">
         Giới thiệu SQL
         <i class="fas fa-check read-icon"></i>
@@ -400,7 +400,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/bang-du-lieu/gioi-thieu-sql.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/chapters/flask-co-ban/static-file.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -435,7 +435,7 @@
             
           
           
-            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/bang-du-lieu/'>Bảng dữ liệu</a> > Giới thiệu SQL
+            <a href='/'>Học Python</a> > <a href='/chapters/'>30 Ngày Flask</a> > <a href='/chapters/flask-co-ban/'>Flask cơ bản</a> > Static File
           
          
           
@@ -454,10 +454,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#sql-là-gì">SQL là gì?</a></li>
-<li><a href="#hệ-quản-trị-csdl">Hệ quản trị CSDL</a></li>
-<li><a href="#cài-đặt-sqlite">Cài đặt SQLite</a></li>
-<li><a href="#cài-đặt-sqlite-browser">Cài đặt SQLite Browser</a></li>
+<li>
+<ul>
+<li><a href="#giải-bài-phần-trước">Giải bài phần trước:</a></li>
+</ul></li>
+<li><a href="#file-tĩnh-file-tài-nguyên">File tĩnh/File tài nguyên</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -472,7 +473,7 @@
         
         <div id="body-inner">
           
-            <h1>Giới thiệu SQL</h1>
+            <h1>Static File</h1>
           
 
         
@@ -480,63 +481,97 @@
 
 
 
-<h2 id="sql-là-gì">SQL là gì?</h2>
+<h3 id="giải-bài-phần-trước">Giải bài phần trước:</h3>
 
-<p><em>SQL = Structured Query Language</em></p>
+<p>File <code>app.py</code>:</p>
 
-<p>SQL là một ngôn ngữ giúp bạn tương tác (tìm kiếm, thêm, sửa, xóa,..) trên Cơ sở dữ liệu.
-<img src="../sql-explain.png" alt="database table" /></p>
+<pre><code class="language-python">from flask import Flask
+from flask import render_template
+app = Flask(__name__)
 
-<h2 id="hệ-quản-trị-csdl">Hệ quản trị CSDL</h2>
+@app.route('/sum/&lt;int:a&gt;/&lt;int:b&gt;')
+def sum(a, b):
+   return render_template('ketqua.html', a=a, b=b, c=a+b, phep='+')
 
-<p><em>Tiếng anh:  Database Management System - DBMS</em></p>
+@app.route('/sub/&lt;int:a&gt;/&lt;int:b&gt;')
+def sub(a, b):
+   return render_template('ketqua.html', a=a, b=b, c=a-b, phep='-')
 
-<p>Là các chương trình/hệ thống được thiết kế để quản lý CSDL.
-Các chương trình này hỗ trợ thêm, sửa, xóa, tìm kiếm trong CSDL và chúng thường sử dụng ngôn ngữ SQL.</p>
-
-<p><strong>Một số DBMS phổ biến</strong>: MySQL, Oracle, PostreSQL, SQL Server,..</p>
-
-<div class="notices note" ><p>Các DBMS phổ biến nói trên thường khá phức tạp để sử dụng.
-Để đơn giản, chúng ta sẽ sử dụng một DBMS nhỏ gọn hơn là SQLite</p>
-</div>
-
-
-<h2 id="cài-đặt-sqlite">Cài đặt SQLite</h2>
-
-<p>Cài SQLite trên Ubuntu 18.04 khá đơn giản. Ta chạy câu lệnh sau:</p>
-
-<pre><code class="language-bash">sudo apt-get update
-sudo apt-get install sqlite3
+if __name__ == '__main__':
+   app.run(debug = True)
 </code></pre>
 
-<p>Có thể kiểm tra xem sqlite3 đã được cài đặt hay chưa</p>
+<p>File <code>templates/ketqua.html</code></p>
 
-<pre><code class="language-bash">sqlite3 --version
+<pre><code class="language-HTML">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;{{ a }} {{ phep }} {{ b }} = {{ c }}&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="file-tĩnh-file-tài-nguyên">File tĩnh/File tài nguyên</h2>
+
+<p>Các ứng dụng web thường cần thêm những file tĩnh (như file css, javascript,..).
+Flask đặc biệt hỗ trợ một nơi lưu trữ các file này đó là thư mục <code>static/</code></p>
+
+<p>Tạo 1 file <code>static/style.css</code>, cây thư mục như sau:</p>
+
+<pre><code>├── hello.py
+├── static
+│   └── style.css
+└── templates
+    └── hello.html
+</code></pre>
+
+<p>Nội dung file <code>style.css</code></p>
+
+<pre><code class="language-css">h1 {
+  color: blue;
+}
+</code></pre>
+
+<p>Dùng hàm <code>url_for()</code> để lấy đường dẫn của file <code>style.css</code>.
+Sửa file <code>hello.html</code> thành như sau:</p>
+
+<pre><code class="language-HTML">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ url_for('static', filename='style.css') }}&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello {{ name }}&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
 <p>Kết quả:
-<img src="../demo-sqlite3-version.png" alt="sqlite3 version demo" /></p>
+<img src="../assets/markdown-img-paste-20181209225536735.png?classes=bordered" alt="ket qua" /></p>
 
-<h2 id="cài-đặt-sqlite-browser">Cài đặt SQLite Browser</h2>
+<p>Output Source:</p>
 
-<p>Chúng ta sẽ cài thêm một công cụ GUI nữa giúp cho việc quản lý DB dễ dàng hơn:</p>
-
-<pre><code class="language-bash">sudo apt-get install sqlitebrowser
+<pre><code class="language-HTML">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/style.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello Chien&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
-<p>Một phần mềm <strong>DB Browser for SQLite</strong> sẽ được cài vào máy, giao diện như sau:</p>
+<p>Ta thấy, kết quả của hàm:</p>
 
-<p><img src="../sqlite3-demo-gui.png" alt="sqlite3 gui demo" /></p>
+<pre><code class="language-python">url_for('static', filename='style.css')
+</code></pre>
 
-<p>Click <strong>New Database</strong> và điền tên file <code>database.sqlite3</code> (file này sẽ chứa dữ liệu). Lưu tại thư mục <strong>Home</strong></p>
+<p>là <code>/static/style.css</code> và CSS đã hoạt động.</p>
 
-<p><img src="../new-database.png" alt="sqlite3 new table" /></p>
+<blockquote>
+<p><strong>Hỏi:</strong> Vậy tại sao không dùng luôn <code>/static/style.css</code> cho nhanh?</p>
 
-<p>Hệ thống sẽ hỏi về việc tạo thêm bảng mới, tạm thời ta bỏ qua và ấn <strong>Cancel</strong></p>
-
-<p><img src="../cancel-table.png" alt="sqlite3 new table" /></p>
-
-<p>Ok, vậy là xong phần setup database!</p>
+<p><strong>Đáp:</strong> Khi làm project thực tế ta sẽ đưa tất cả file trong project vào 1 thư mục, khi đó việc định vị file css sẽ  khó khăn hơn. Hàm <em>url_for</em> sẽ hoạt động tốt trong trường hợp này.</p>
+</blockquote>
 
 
 <footer class=" footline" >
@@ -591,8 +626,6 @@ sudo apt-get install sqlite3
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -607,37 +640,8 @@ sudo apt-get install sqlite3
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -682,30 +686,11 @@ sudo apt-get install sqlite3
             
         
                     
-            
-        
-                    
                         
             
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -723,6 +708,56 @@ sudo apt-get install sqlite3
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -750,10 +785,10 @@ sudo apt-get install sqlite3
 	 
 	 
 		
-			<a class="nav nav-prev" href="/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/chapters/flask-co-ban/gioi-thieu-template/" title="Giới thiệu Template"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/chapters/bang-du-lieu/gioi-thieu-co-so-du-lieu/" title="Làm quen với cơ sở dữ liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/chapters/flask-co-ban/lam-quen-voi-request/" title="Làm quen với object request" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
